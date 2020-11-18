@@ -11,10 +11,13 @@ def definiteIntegralFunc(max_coeff=100):
     b = random.randint(0, max_coeff)
     c = random.randint(0, max_coeff)
 
-    result = quad(integrand, 0, 1, args=(a, b, c))[0]
+    lbound = random.randint(-10, 10)
+    ubound = random.randint(lbound, 11)
+
+    result = quad(integrand, lbound, ubound, args=(a, b, c))[0]
     S = round(result, 4)
 
-    problem = "The definite integral within limits 0 to 1 of the equation " + \
+    problem = "The definite integral within limits " + str(lbound) " to " + str(ubound) " of the equation " + \
         str(a) + "x^2 + " + str(b) + "x + " + str(c) + " is = "
 
     solution = str(S)
@@ -24,5 +27,5 @@ def definiteIntegralFunc(max_coeff=100):
 
 definite_integral = Generator(
     "Definite Integral of Quadratic Equation", 89,
-    "The definite integral within limits 0 to 1 of quadratic equation ax^2+bx+c is = ",
+    "The definite integral within limits M to N of quadratic equation ax^2+bx+c is = ",
     "S", definiteIntegralFunc)
